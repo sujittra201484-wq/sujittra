@@ -182,15 +182,23 @@ export default function OrdersTable() {
                     <StatusBadge status={order.status} />
                   </td>
                   <td className="px-4 py-3 text-right align-top">
-                    {next && (
-                      <button
-                        type="button"
-                        onClick={() => handleAdvance(order)}
-                        className="whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                    <div className="flex flex-col items-end gap-1.5">
+                      {next && (
+                        <button
+                          type="button"
+                          onClick={() => handleAdvance(order)}
+                          className="whitespace-nowrap rounded-md border border-slate-300 bg-white px-3 py-1.5 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                        >
+                          {ACTION_LABEL[order.status]}
+                        </button>
+                      )}
+                      <Link
+                        href={`/orders/${order.id}/quotation`}
+                        className="whitespace-nowrap px-1 text-xs font-medium text-brand hover:underline"
                       >
-                        {ACTION_LABEL[order.status]}
-                      </button>
-                    )}
+                        ใบเสนอราคา
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               );

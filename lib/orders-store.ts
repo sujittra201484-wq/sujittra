@@ -66,6 +66,12 @@ export function useOrders(): Order[] | null {
   return useSyncExternalStore(subscribe, load, () => null);
 }
 
+/** คำสั่งซื้อใบเดียวตามรหัส: null ระหว่างโหลด, undefined เมื่อไม่พบ */
+export function useOrder(id: string): Order | null | undefined {
+  const orders = useOrders();
+  return orders && orders.find((o) => o.id === id);
+}
+
 /** รหัสคำสั่งซื้อที่เพิ่งบันทึกภายใน 10 วินาที ใช้ไฮไลต์ในหน้ารายการ */
 export function getRecentlyAddedId(): string | null {
   return lastAdded && Date.now() - lastAdded.at < 10_000 ? lastAdded.id : null;
