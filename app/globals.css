@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-plex-thai), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* สีหลักของระบบ (ชมพู) เปลี่ยนที่นี่ที่เดียว */
+@theme {
+  --color-brand: #be185d;
+  --color-brand-dark: #9d174d;
+  --color-brand-soft: #fdf2f8;
+}
+
+body {
+  background: #f8fafc;
+  color: #0f172a;
+}
